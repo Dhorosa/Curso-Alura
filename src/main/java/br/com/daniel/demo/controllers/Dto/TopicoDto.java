@@ -18,10 +18,10 @@ public class TopicoDto {
    
 
     public TopicoDto(Topico topico){
-        this.id = getId();
-        this.titulo= getTitulo();
-        this.mensagem= getMensagem();
-        this.dataCriacao = getDataCriacao();
+        this.id = topico.getId();
+        this.titulo= topico.getTitulo();
+        this.mensagem= topico.getMensagem();
+        this.dataCriacao = topico.getDataCriacao();
         
     }
 
