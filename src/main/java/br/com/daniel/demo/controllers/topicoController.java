@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.daniel.demo.controllers.Dto.TopicoDto;
+import br.com.daniel.demo.controllers.Repository.TopicoRepository;
 import br.com.daniel.demo.src.main.java.br.com.alura.forum.model.Topico;
 
 
@@ -17,9 +18,18 @@ public class topicoController {
     private TopicoRepository topicoRepository;
 
     @RequestMapping("/topicos")
-    public List<TopicoDto> lista() {
+    public List<TopicoDto> lista(String nomeCurso) {
+        if (nomeCurso == null){
         List<Topico> topicos = topicoRepository.findAll();
         return TopicoDto.converter( topicos );
+
+        } else {
+
+            List<Topico> topicos = topicoRepository.findByCursoNome(nomeCurso);
+            return TopicoDto.converter( topicos );
+        }   
+
+        
 
        }   
     
